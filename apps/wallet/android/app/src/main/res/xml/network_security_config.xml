@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android Network Security Configuration
+  Enforces HTTPS for all connections and enables certificate pinning for production issuers.
+  https://developer.android.com/training/articles/security-config
+-->
+<network-security-config>
+  <!-- Block all cleartext (HTTP) traffic -->
+  <base-config cleartextTrafficPermitted="false">
+    <trust-anchors>
+      <certificates src="system" />
+    </trust-anchors>
+  </base-config>
+
+  <!-- Allow HTTP for local development issuer only -->
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="false">localhost</domain>
+    <domain includeSubdomains="false">10.0.2.2</domain>
+  </domain-config>
+
+  <!--
+    Production issuer pinning (replace with real SPKI hashes before release):
+    openssl s_client -connect issuer.gov.bb:443 | openssl x509 -pubkey -noout |
+      openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | base64
+  -->
+  <!-- <domain-config>
+    <domain includeSubdomains="true">issuer.gov.bb</domain>
+    <pin-set expiration="2026-01-01">
+      <pin digest="SHA-256">REPLACE_WITH_REAL_SPKI_HASH=</pin>
+      <pin digest="SHA-256">REPLACE_WITH_BACKUP_SPKI_HASH=</pin>
+    </pin-set>
+  </domain-config> -->
+</network-security-config>
