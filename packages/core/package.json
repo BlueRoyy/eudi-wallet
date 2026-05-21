@@ -1,0 +1,51 @@
+{
+  "name": "@eudi-wallet/core",
+  "version": "0.1.0",
+  "description": "Pure TypeScript core — OID4VCI, OID4VP, SD-JWT VC, mDoc/CBOR, trust validation",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./oid4vci": {
+      "import": "./dist/oid4vci/index.js",
+      "types": "./dist/oid4vci/index.d.ts"
+    },
+    "./oid4vp": {
+      "import": "./dist/oid4vp/index.js",
+      "types": "./dist/oid4vp/index.d.ts"
+    },
+    "./credentials": {
+      "import": "./dist/credentials/index.js",
+      "types": "./dist/credentials/index.d.ts"
+    },
+    "./trust": {
+      "import": "./dist/trust/index.js",
+      "types": "./dist/trust/index.d.ts"
+    },
+    "./revocation": {
+      "import": "./dist/revocation/index.js",
+      "types": "./dist/revocation/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "jose": "^5.3.0",
+    "cbor2": "^1.8.0",
+    "@noble/hashes": "^1.4.0",
+    "@noble/curves": "^1.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}
