@@ -1,0 +1,21 @@
+{
+  "name": "@eudi-wallet/crypto",
+  "version": "0.1.0",
+  "description": "Native crypto bridge — Secure Enclave (iOS) and StrongBox (Android)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@eudi-wallet/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.74.0"
+  }
+}
